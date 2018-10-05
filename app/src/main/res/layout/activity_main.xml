@@ -26,22 +26,14 @@
 
             <ImageView
                 android:id="@+id/img_logo"
-                android:layout_width="80dp"
+                android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@null"
                 android:scaleType="fitCenter"
-                android:src="@drawable/logo"
+                android:src="@drawable/logo_with_text"
                 android:transitionName="@string/logo_transition"
                 tools:targetApi="lollipop" />
-
-            <TextView
-                android:id="@+id/tv_logo"
-                style="@style/text_view_default"
-                android:layout_marginTop="@dimen/default_padding"
-                android:text="@string/university_law"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/big_text_size" />
         </LinearLayout>
 
         <RelativeLayout

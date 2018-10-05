@@ -22,4 +22,7 @@
     <color name="moview_type_color">#FFA000</color>
     <color name="imax_color">#E53935</color>
     <color name="background_movie">#263238</color>
+    <color name="green_color">#2E7D32</color>
+    <color name="hightlight_color">#0091EA</color>
+    <color name="black">#000</color>
 </resources>

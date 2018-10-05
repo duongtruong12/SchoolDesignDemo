@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.View;
 
 import com.example.truong.schooldesigndemo.Activity.PagerTab.PageFragment;
 import com.example.truong.schooldesigndemo.R;
@@ -19,14 +20,18 @@ import java.util.List;
 public class HomeActivity extends CommonActivity {
     private TabLayout tabLayout;
     private static final String TAG = HomeActivity.class.getSimpleName();
-    private int normalColor = ContextCompat.getColor(context, R.color.gray), selectedColor = ContextCompat.getColor(context, R.color.colorPrimary);
+    private int normalColor, selectedColor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        installToolbar();
+        installToolbar("House");
+        imgBack.setVisibility(View.GONE);
 
+        selectedColor = ContextCompat.getColor(context, R.color.white);
+        normalColor = ContextCompat.getColor(context, R.color.white);
 
         ViewPager viewPager = findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -126,7 +131,7 @@ public class HomeActivity extends CommonActivity {
         public CharSequence getPageTitle(int position) {
 
             // return null to display only the icon
-            return mFragmentTitleList.get(position);
+            return null;
         }
     }
 }

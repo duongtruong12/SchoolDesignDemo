@@ -19,22 +19,22 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.truong.schooldesigndemo.CustomView.TransitionHelper;
 import com.example.truong.schooldesigndemo.Dialog.ProgressBarDialog;
 import com.example.truong.schooldesigndemo.MainActivity;
 import com.example.truong.schooldesigndemo.R;
 import com.example.truong.schooldesigndemo.Utils;
-import com.google.gson.Gson;
 
 @SuppressLint("Registered")
 public class CommonActivity extends AppCompatActivity {
     protected Context context = this;
     protected ProgressBarDialog progressDialog;
     protected RelativeLayout rlTotalToolbar, rlToolbar, rlViewToolbar;
+    protected TextView tvTitleToolbar;
     protected LinearLayout llError;
     protected ImageView imgBack;
-    protected Gson gson = new Gson();
 
     private static final String TAG = CommonActivity.class.getSimpleName();
 
@@ -60,13 +60,16 @@ public class CommonActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    protected void installToolbar() {
+    protected void installToolbar(String title) {
         try {
             rlTotalToolbar = findViewById(R.id.rl_total_toolbar);
             rlToolbar = findViewById(R.id.rl_toolbar);
             rlViewToolbar = findViewById(R.id.rl_view_toolbar);
             llError = findViewById(R.id.ll_error_toolbar);
             imgBack = findViewById(R.id.img_back_toolbar);
+            tvTitleToolbar = findViewById(R.id.tv_title_toolbar);
+
+            tvTitleToolbar.setText(title);
             imgBack.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

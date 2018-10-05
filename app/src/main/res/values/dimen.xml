@@ -25,4 +25,5 @@
     <dimen name="img_movie_height">180dp</dimen>
     <dimen name="rating_bar">100dp</dimen>
     <dimen name="elevation_height">3dp</dimen>
+    <dimen name="image_lít_house_height">150dp</dimen>
 </resources>

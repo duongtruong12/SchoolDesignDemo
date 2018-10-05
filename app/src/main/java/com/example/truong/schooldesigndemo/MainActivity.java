@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.truong.schooldesigndemo.Activity.CommonActivity;
-import com.example.truong.schooldesigndemo.Activity.HomeActivity;
+import com.example.truong.schooldesigndemo.Activity.ListHouseActivity;
 import com.example.truong.schooldesigndemo.CustomView.PlaceHolderInfoDefault;
 
 public class MainActivity extends CommonActivity implements View.OnClickListener {
@@ -38,7 +38,7 @@ public class MainActivity extends CommonActivity implements View.OnClickListener
 
     private void installView() {
         try {
-            installToolbar();
+            installToolbar("");
 
             rlLogin = findViewById(R.id.rl_login);
 
@@ -131,7 +131,7 @@ public class MainActivity extends CommonActivity implements View.OnClickListener
     }
 
     private void loginMethod() {
-        Intent intent = new Intent(this, HomeActivity.class);
+        Intent intent = new Intent(this, ListHouseActivity.class);
         startActivity(intent);
     }
 
@@ -139,9 +139,10 @@ public class MainActivity extends CommonActivity implements View.OnClickListener
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
-                if (checkInfo()) {
-                    loginMethod();
-                }
+//                if (checkInfo()) {
+//                    loginMethod();
+//                }
+                loginMethod();
                 break;
             case R.id.tv_sign_up:
                 break;
