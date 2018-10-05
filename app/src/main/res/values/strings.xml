@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="app_name">Demo</string>
+    <string name="login">Login</string>
+    <string name="forgot_pass">Forgot Password?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="user_name">Username</string>
+    <string name="password">Password</string>
+    <string name="incorrect_format">{0} is an incorrect format.</string>
+    <string name="duplicate_format">{0} cannot duplicate.</string>
+    <string name="error_warning">Opps, something went wrong, try again later.</string>
+    <string name="email">Email</string>
+    <string name="university_law">University Law College</string>
+    <!--transition-->
+    <string name="logo_transition">logo_transition</string>
+
+</resources>
