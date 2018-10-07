@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_list"
     android:orientation="vertical"
     tools:context=".Activity.ListHouseActivity">
 
@@ -11,5 +12,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rc_list_house"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/default_padding"
+        android:paddingTop="@dimen/default_padding" />
 </LinearLayout>

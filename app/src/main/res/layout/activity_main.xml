@@ -27,13 +27,14 @@
             <ImageView
                 android:id="@+id/img_logo"
                 android:layout_width="wrap_content"
-                android:layout_height="80dp"
+                android:layout_height="100dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@null"
                 android:scaleType="fitCenter"
-                android:src="@drawable/logo_with_text"
+                android:src="@drawable/logo"
                 android:transitionName="@string/logo_transition"
                 tools:targetApi="lollipop" />
+
         </LinearLayout>
 
         <RelativeLayout

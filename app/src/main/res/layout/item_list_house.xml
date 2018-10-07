@@ -1,113 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/ll_total_view"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="@dimen/extra_small_padding">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/default_padding"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/default_padding"
+        android:elevation="3dp"
         app:cardUseCompatPadding="true"
-        card_view:cardCornerRadius="0dp">
+        card_view:cardCornerRadius="0dp"
+        card_view:ignore="UnusedAttribute">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white">
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_width="@dimen/img_movie_width"
-                android:layout_height="@dimen/image_lít_house_height"
+                android:id="@+id/thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@null"
                 android:scaleType="fitXY"
                 android:src="@drawable/house" />
 
-            <!--House Info-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/default_padding"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-
                     <TextView
-                        style="@style/text_view_default"
-                        android:ellipsize="end"
-                        android:text="Tòa nhà Viettel" />
-
-                    <LinearLayout
+                        android:id="@+id/title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/extra_small_padding"
-                        card_view:ignore="UseCompoundDrawables">
-
-                        <ImageView
-                            style="@style/ic_style"
-                            android:contentDescription="@null"
-                            android:src="@drawable/ic_location" />
-
-                        <TextView
-                            style="@style/text_view_default"
-                            android:layout_marginStart="@dimen/extra_small_padding"
-                            android:text="Số 7 ngõ 147 An Dương"
-                            android:textColor="@color/gray" />
-                    </LinearLayout>
+                        android:paddingEnd="@dimen/default_padding"
+                        android:paddingStart="@dimen/default_padding"
+                        android:paddingTop="@dimen/default_padding"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/base_text_Size" />
 
                     <TextView
-                        style="@style/text_view_default"
-                        android:layout_marginTop="@dimen/extra_small_padding"
-                        android:ellipsize="end"
-                        android:maxLines="3"
-                        android:text="Each symbol is available in five themes and a range of downloadable sizes and densiti" />
+                        android:id="@+id/count"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="@dimen/small_padding"
+                        android:paddingEnd="@dimen/default_padding"
+                        android:paddingStart="@dimen/default_padding"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/extra_small_padding"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    card_view:ignore="UseCompoundDrawables">
-
-                    <TextView
-                        style="@style/text_view_default"
-                        android:layout_alignParentStart="true"
-                        android:layout_gravity="start"
-                        android:text="Cảnh báo: Bật"
-                        android:textColor="@color/black" />
-
-                    <TextView
-                        android:id="@+id/tv_book"
-                        style="@style/text_view_default"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginStart="@dimen/extra_small_padding"
-                        android:ellipsize="end"
-                        android:text="Đặt lịch"
-                        android:textColor="@color/hightlight_color" />
-
-                    <ImageView
-                        style="@style/ic_style"
-                        android:layout_toStartOf="@id/tv_book"
-                        android:contentDescription="@null"
-                        android:src="@drawable/ic_time"
-                        android:tint="@color/hightlight_color" />
-
-                </RelativeLayout>
+                <ImageView
+                    android:id="@+id/ic_overflow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:contentDescription="@null"
+                    android:scaleType="centerCrop"
+                    android:tint="@color/gray"
+                    android:src="@drawable/ic_more" />
             </LinearLayout>
 
         </LinearLayout>
-    </android.support.v7.widget.CardView>
 
+    </android.support.v7.widget.CardView>
 </LinearLayout>

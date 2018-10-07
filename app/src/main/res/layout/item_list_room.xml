@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/ll_total_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="3dp"
+        app:cardUseCompatPadding="true"
+        card_view:cardCornerRadius="0dp"
+        card_view:ignore="UnusedAttribute">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin">
+
+            <ImageView
+                android:id="@+id/img_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@null"
+                android:src="@drawable/room_living" />
+
+            <TextView
+                android:id="@+id/tv_room"
+                style="@style/text_view_default"
+                android:layout_below="@id/img_room"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/login_text_size"
+                android:text="@string/room_living"
+                android:textSize="@dimen/big_text_size" />
+
+            <TextView
+                android:id="@+id/tv_room_device"
+                style="@style/text_view_default"
+                android:layout_below="@id/tv_room"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/default_padding"
+                android:textColor="@color/gray" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

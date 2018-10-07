@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Demo</string>
+    <string name="app_name">Smart House</string>
     <string name="login">Login</string>
     <string name="forgot_pass">Forgot Password?</string>
     <string name="sign_up">Sign up</string>
@@ -14,4 +14,17 @@
     <!--transition-->
     <string name="logo_transition">logo_transition</string>
 
+    <string name="info">Info</string>
+    <string name="pick_time">Pick a time</string>
+
+    <string name="temperature">Temperature</string>
+    <string name="camera">Camera</string>
+
+    <string name="room_bed">Bedroom</string>
+    <string name="room_living">Livingroom</string>
+    <string name="room_kitchen">Kitchen</string>
+    <string name="room_bath">Bathroom</string>
+    <string name="room_library">Library</string>
+
+    <string name="house_device_number">{0} devices</string>
 </resources>

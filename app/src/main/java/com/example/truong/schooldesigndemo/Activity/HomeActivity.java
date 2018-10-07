@@ -11,7 +11,9 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 
-import com.example.truong.schooldesigndemo.Activity.PagerTab.PageFragment;
+import com.example.truong.schooldesigndemo.Activity.PagerTab.HomeFragment;
+import com.example.truong.schooldesigndemo.Activity.PagerTab.MoreInfoFragment;
+import com.example.truong.schooldesigndemo.Activity.PagerTab.NotificationFragment;
 import com.example.truong.schooldesigndemo.R;
 
 import java.util.ArrayList;
@@ -30,8 +32,8 @@ public class HomeActivity extends CommonActivity {
         installToolbar("House");
         imgBack.setVisibility(View.GONE);
 
-        selectedColor = ContextCompat.getColor(context, R.color.white);
-        normalColor = ContextCompat.getColor(context, R.color.white);
+        selectedColor = ContextCompat.getColor(context, R.color.colorPrimary);
+        normalColor = ContextCompat.getColor(context, R.color.gray);
 
         ViewPager viewPager = findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -44,9 +46,9 @@ public class HomeActivity extends CommonActivity {
     private void setupTabIcons() {
         try {
             int[] tabIcons = {
-                    R.drawable.ic_home,
-                    R.drawable.ic_notification,
-                    R.drawable.ic_more
+                    R.drawable.ic_home_outline,
+                    R.drawable.ic_notification_outline,
+                    R.drawable.ic_settings_outline
             };
 
             tabLayout.setTabTextColors(normalColor, selectedColor);
@@ -98,10 +100,11 @@ public class HomeActivity extends CommonActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFrag(new PageFragment(), "Home");
-        adapter.addFrag(new PageFragment(), "Notification");
-        adapter.addFrag(new PageFragment(), "More");
+        adapter.addFrag(new HomeFragment(), "Home");
+        adapter.addFrag(new NotificationFragment(), "Notification");
+        adapter.addFrag(new MoreInfoFragment(), "More");
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(adapter.getCount());
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -131,7 +134,8 @@ public class HomeActivity extends CommonActivity {
         public CharSequence getPageTitle(int position) {
 
             // return null to display only the icon
-            return null;
+            Log.d(TAG, "getPageTitle: " + mFragmentTitleList.get(position));
+            return mFragmentTitleList.get(position);
         }
     }
 }

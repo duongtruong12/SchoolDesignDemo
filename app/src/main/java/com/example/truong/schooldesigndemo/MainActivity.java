@@ -14,7 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.truong.schooldesigndemo.Activity.CommonActivity;
-import com.example.truong.schooldesigndemo.Activity.ListHouseActivity;
+import com.example.truong.schooldesigndemo.Activity.HomeActivity;
 import com.example.truong.schooldesigndemo.CustomView.PlaceHolderInfoDefault;
 
 public class MainActivity extends CommonActivity implements View.OnClickListener {
@@ -131,7 +131,7 @@ public class MainActivity extends CommonActivity implements View.OnClickListener
     }
 
     private void loginMethod() {
-        Intent intent = new Intent(this, ListHouseActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 

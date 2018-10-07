@@ -89,4 +89,10 @@
 
     </style>
 
+    <style name="ic_list_device">
+        <item name="android:layout_height">@dimen/icon_size_bih</item>
+        <item name="android:layout_width">@dimen/icon_size_bih</item>
+        <item name="android:tint">@color/colorPrimary</item>
+    </style>
+
 </resources>
