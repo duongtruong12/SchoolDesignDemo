@@ -19,12 +19,22 @@
 
     <string name="temperature">Temperature</string>
     <string name="camera">Camera</string>
+    <string name="device">Device: </string>
+    <string name="main_device">Main Device: </string>
+    <string name="address">Address: </string>
+    <string name="warning">Warning: </string>
 
     <string name="room_bed">Bedroom</string>
     <string name="room_living">Livingroom</string>
     <string name="room_kitchen">Kitchen</string>
     <string name="room_bath">Bathroom</string>
     <string name="room_library">Library</string>
+
+    <string name="dv_camera">Camera</string>
+    <string name="dv_light">Light</string>
+    <string name="dv_gas">Gas</string>
+    <string name="dv_temp">Temp</string>
+    <string name="dv_door">Door</string>
 
     <string name="house_device_number">{0} devices</string>
 </resources>

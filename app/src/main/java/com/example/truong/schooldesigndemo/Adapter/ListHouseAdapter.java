@@ -47,7 +47,7 @@ public class ListHouseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 2;
     }
 
     @Override
@@ -72,7 +72,7 @@ public class ListHouseAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         private ListHouseHolder(View v) {
             super(v);
             llTotalView = v.findViewById(R.id.ll_total_view);
-            icOverFlow = v.findViewById(R.id.ic_overflow);
+            icOverFlow = v.findViewById(R.id.img_more);
         }
     }
 

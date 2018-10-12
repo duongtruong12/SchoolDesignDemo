@@ -86,7 +86,6 @@
 
         <!-- inactive track color (30% transparency) -->
         <item name="android:colorForeground">#42221f1f</item>
-
     </style>
 
     <style name="ic_list_device">

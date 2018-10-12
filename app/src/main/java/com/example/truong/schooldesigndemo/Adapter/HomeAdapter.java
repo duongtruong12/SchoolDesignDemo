@@ -4,12 +4,12 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.truong.schooldesigndemo.CustomView.GridSpacingItemDecoration;
 import com.example.truong.schooldesigndemo.Object.HouseDTO;
@@ -28,12 +28,18 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<RoomDTO> roomDTOS;
     private final int HEADER_HOUSE = 1;
     private final int ROOM_LIST = 2;
+    private OnClickRoom onClickRoom;
 
-    public HomeAdapter(Context context, List<Object> items, HouseDTO houseDTO, List<RoomDTO> roomDTOS) {
+    public interface OnClickRoom {
+        void onClickRoom(RoomDTO roomDTO);
+    }
+
+    public HomeAdapter(Context context, List<Object> items, HouseDTO houseDTO, List<RoomDTO> roomDTOS, OnClickRoom onClickRoom) {
         this.context = context;
         this.items = items;
         this.roomDTOS = roomDTOS;
         this.houseDTO = houseDTO;
+        this.onClickRoom = onClickRoom;
     }
 
     @NonNull
@@ -44,7 +50,7 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         RecyclerView.ViewHolder holder;
         switch (viewType) {
             case HEADER_HOUSE:
-                view = inflater.inflate(R.layout.item_header_home, parent, false);
+                view = inflater.inflate(R.layout.layout_recycler_view, parent, false);
                 holder = new HeaderHome(view);
                 break;
             case ROOM_LIST:
@@ -69,14 +75,9 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private void verticalView(HeaderHome h) {
         try {
-            h.tvHouseName.setText(houseDTO.getHouseName());
-            h.tvHouseDevice.setText(Utils.format(context.getString(R.string.house_device_number), houseDTO.getDeviceNumber()));
-            h.tvHouseDevice.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.d(TAG, "onClick: " + items.size());
-                }
-            });
+            HeaderHomeAdapter adapter1 = new HeaderHomeAdapter(context, houseDTO);
+            h.recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            h.recyclerView.setAdapter(adapter1);
         } catch (Throwable e) {
             Log.e(TAG, "verticalView: ", e);
         }
@@ -84,19 +85,25 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 
     private void horizontalView(ListRoom h) {
-        ListRoomAdapter adapter = new ListRoomAdapter(context, roomDTOS);
+        ListRoomAdapter adapter = new ListRoomAdapter(context, roomDTOS, new ListRoomAdapter.OnClickRoom() {
+            @Override
+            public void onClickRoom(RoomDTO roomDTO) {
+                onClickRoom.onClickRoom(roomDTO);
+            }
+        });
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(context, 2);
+        h.recyclerView.setAdapter(adapter);
         h.recyclerView.setLayoutManager(mLayoutManager);
         h.recyclerView.setHasFixedSize(true);
+        h.recyclerView.setNestedScrollingEnabled(false);
         h.recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, Utils.dpToPx(context, 16), true));
         h.recyclerView.setItemAnimator(new DefaultItemAnimator());
-        h.recyclerView.setAdapter(adapter);
     }
 
 
     @Override
     public int getItemCount() {
-        return 2;
+        return items.size();
     }
 
     @Override
@@ -109,12 +116,11 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     private class HeaderHome extends RecyclerView.ViewHolder {
-        private TextView tvHouseName, tvHouseDevice;
+        RecyclerView recyclerView;
 
         private HeaderHome(View v) {
             super(v);
-            tvHouseDevice = v.findViewById(R.id.tv_house_device);
-            tvHouseName = v.findViewById(R.id.tv_house_name);
+            recyclerView = v.findViewById(R.id.inner_recyclerView);
         }
     }
 
@@ -126,6 +132,5 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             recyclerView = v.findViewById(R.id.inner_recyclerView);
         }
     }
-
 }
 

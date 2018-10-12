@@ -3,7 +3,6 @@ package com.example.truong.schooldesigndemo.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -24,7 +23,7 @@ public class ListHouseActivity extends CommonActivity {
 
         ListHouseAdapter listHouseAdapter = new ListHouseAdapter(context);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context, OrientationHelper.VERTICAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(listHouseAdapter);

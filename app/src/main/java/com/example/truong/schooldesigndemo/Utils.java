@@ -134,8 +134,12 @@ public class Utils {
      * Converting dp to pixel
      */
     public static int dpToPx(Context context, int dp) {
-        Resources r = context.getResources();
-        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
+        if (context != null) {
+            Resources r = context.getResources();
+            return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics())) > 0 ? Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics())) : 0;
+        } else {
+            return dp;
+        }
     }
 
     public static String getRoomName(Context context, String type) {
@@ -155,6 +159,16 @@ public class Utils {
                         return r.getString(R.string.room_library);
                     case Constanst.Room.LIVING_ROOM:
                         return r.getString(R.string.room_living);
+                    case Constanst.Device.LIGHTING:
+                        return r.getString(R.string.dv_light);
+                    case Constanst.Device.GAS:
+                        return r.getString(R.string.dv_gas);
+                    case Constanst.Device.DOOR:
+                        return r.getString(R.string.dv_door);
+                    case Constanst.Device.CAMERA:
+                        return r.getString(R.string.dv_camera);
+                    case Constanst.Device.TEMP:
+                        return r.getString(R.string.dv_temp);
                     default:
                         return "";
                 }
@@ -168,7 +182,7 @@ public class Utils {
     public static Drawable getRoomImage(Context context, String type) {
         try {
             if (Utils.isNullOrEmpty(type))
-                return ContextCompat.getDrawable(context, R.drawable.room_living);
+                return ContextCompat.getDrawable(context, R.drawable.ic_light);
             else {
                 switch (type) {
                     case Constanst.Room.BATH_ROOM:
@@ -181,13 +195,23 @@ public class Utils {
                         return ContextCompat.getDrawable(context, R.drawable.room_library);
                     case Constanst.Room.LIVING_ROOM:
                         return ContextCompat.getDrawable(context, R.drawable.room_living);
+                    case Constanst.Device.LIGHTING:
+                        return ContextCompat.getDrawable(context, R.drawable.ic_light);
+                    case Constanst.Device.GAS:
+                        return ContextCompat.getDrawable(context, R.drawable.ic_gas);
+                    case Constanst.Device.DOOR:
+                        return ContextCompat.getDrawable(context, R.drawable.ic_door);
+                    case Constanst.Device.CAMERA:
+                        return ContextCompat.getDrawable(context, R.drawable.ic_camera);
+                    case Constanst.Device.TEMP:
+                        return ContextCompat.getDrawable(context, R.drawable.ic_temp);
                     default:
-                        return ContextCompat.getDrawable(context, R.drawable.room_living);
+                        return ContextCompat.getDrawable(context, R.drawable.ic_light);
                 }
             }
         } catch (Throwable e) {
             Log.e(TAG, "getRoomName: ", e);
-            return ContextCompat.getDrawable(context, R.drawable.room_living);
+            return ContextCompat.getDrawable(context, R.drawable.ic_light);
         }
     }
 }

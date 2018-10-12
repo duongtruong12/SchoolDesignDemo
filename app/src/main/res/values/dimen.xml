@@ -17,6 +17,7 @@
     <dimen name="icon_size">20dp</dimen>
     <dimen name="icon_size_normal">24dp</dimen>
     <dimen name="icon_size_bih">32dp</dimen>
+    <dimen name="icon_size_device">42dp</dimen>
     <dimen name="progress_dialog_width">50dp</dimen>
     <dimen name="profile_image_size">60dp</dimen>
     <dimen name="profile_activity_image_size">80dp</dimen>

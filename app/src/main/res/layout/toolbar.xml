@@ -39,7 +39,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@+id/ll_error_toolbar"
-        android:background="@color/background_list">
+        android:background="@color/white">
 
         <RelativeLayout
             android:id="@+id/rl_toolbar"

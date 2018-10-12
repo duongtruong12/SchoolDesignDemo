@@ -1,5 +1,6 @@
 package com.example.truong.schooldesigndemo.Activity.PagerTab;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -11,8 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.truong.schooldesigndemo.Activity.ListDeviceActivity;
 import com.example.truong.schooldesigndemo.Adapter.HomeAdapter;
-import com.example.truong.schooldesigndemo.Adapter.ListHouseAdapter;
 import com.example.truong.schooldesigndemo.Object.HouseDTO;
 import com.example.truong.schooldesigndemo.Object.RoomDTO;
 import com.example.truong.schooldesigndemo.R;
@@ -24,7 +25,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     private static final String TAG = HomeFragment.class.getSimpleName();
     private List<Object> objects = new ArrayList<>();
-    private List<RoomDTO> roomDTO0s = new ArrayList<>();
+    private List<RoomDTO> roomDTOs = new ArrayList<>();
     private HouseDTO houseDTO = new HouseDTO();
 
     @Override
@@ -37,18 +38,26 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        HomeAdapter homeAdapter = new HomeAdapter(getActivity(), objects, houseDTO, roomDTO0s);
-        ListHouseAdapter listHouseAdapter = new ListHouseAdapter(getActivity());
+        HomeAdapter homeAdapter = new HomeAdapter(getActivity(), objects, houseDTO, roomDTOs, new HomeAdapter.OnClickRoom() {
+            @Override
+            public void onClickRoom(RoomDTO roomDTO) {
+                if (getActivity() != null) {
+                    Bundle b = new Bundle();
+                    b.putParcelable(Constanst.ParcelKey.ROOM_DTO, roomDTO);
+                    Intent i = new Intent(getActivity(), ListDeviceActivity.class);
+                    i.putExtras(b);
+                    getActivity().startActivity(i);
+                }
+            }
+        });
         RecyclerView recyclerView = v.findViewById(R.id.rc_list);
+        installList();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), OrientationHelper.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(listHouseAdapter);
-
-        installList();
-        homeAdapter.notifyDataSetChanged();
+        recyclerView.setAdapter(homeAdapter);
         return v;
     }
 
@@ -59,57 +68,29 @@ public class HomeFragment extends Fragment {
         RoomDTO roomDTO = new RoomDTO();
         roomDTO.setDeviceNumber("8");
         roomDTO.setRoom(Constanst.Room.BED_ROOM);
-        roomDTO0s.add(roomDTO);
+        roomDTOs.add(roomDTO);
 
         roomDTO = new RoomDTO();
         roomDTO.setDeviceNumber("15");
         roomDTO.setRoom(Constanst.Room.LIVING_ROOM);
-        roomDTO0s.add(roomDTO);
+        roomDTOs.add(roomDTO);
 
         roomDTO = new RoomDTO();
         roomDTO.setDeviceNumber("7");
         roomDTO.setRoom(Constanst.Room.BATH_ROOM);
-        roomDTO0s.add(roomDTO);
+        roomDTOs.add(roomDTO);
 
         roomDTO = new RoomDTO();
         roomDTO.setDeviceNumber("14");
         roomDTO.setRoom(Constanst.Room.KITCHEN_ROOM);
-        roomDTO0s.add(roomDTO);
+        roomDTOs.add(roomDTO);
 
         roomDTO = new RoomDTO();
         roomDTO.setDeviceNumber("17");
         roomDTO.setRoom(Constanst.Room.LIBRARY);
-        roomDTO0s.add(roomDTO);
-
-        roomDTO = new RoomDTO();
-        roomDTO.setDeviceNumber("17");
-        roomDTO.setRoom(Constanst.Room.LIBRARY);
-        roomDTO0s.add(roomDTO);
-
-        roomDTO = new RoomDTO();
-        roomDTO.setDeviceNumber("17");
-        roomDTO.setRoom(Constanst.Room.LIBRARY);
-        roomDTO0s.add(roomDTO);
-
-        roomDTO = new RoomDTO();
-        roomDTO.setDeviceNumber("17");
-        roomDTO.setRoom(Constanst.Room.LIBRARY);
-        roomDTO0s.add(roomDTO);
-
-        roomDTO = new RoomDTO();
-        roomDTO.setDeviceNumber("17");
-        roomDTO.setRoom(Constanst.Room.LIBRARY);
-        roomDTO0s.add(roomDTO);
-        roomDTO = new RoomDTO();
-        roomDTO.setDeviceNumber("17");
-        roomDTO.setRoom(Constanst.Room.LIBRARY);
-        roomDTO0s.add(roomDTO);  roomDTO = new RoomDTO();
-
-        roomDTO.setDeviceNumber("17");
-        roomDTO.setRoom(Constanst.Room.LIBRARY);
-        roomDTO0s.add(roomDTO);
+        roomDTOs.add(roomDTO);
 
         objects.add(houseDTO);
-        objects.addAll(roomDTO0s);
+        objects.add(roomDTOs.get(0));
     }
 }
